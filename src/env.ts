@@ -1,0 +1,4 @@
+export const ENV = {
+  RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+  STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL,
+};
