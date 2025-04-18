@@ -33,6 +33,9 @@ importers:
       '@types/node':
         specifier: ^20
         version: 20.17.30
+      '@types/react':
+        specifier: ^19.1.0
+        version: 19.1.0
       '@types/react-google-recaptcha':
         specifier: ^2.1.9
         version: 2.1.9
