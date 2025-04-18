@@ -21,7 +21,6 @@ const ServicesModule: React.FC = async () => {
     `${ENV.STRAPI_URL}/${URL}`
   ).then((res) => res.json());
 
-  console.log("data !log", data);
   return (
     <>
       <Section

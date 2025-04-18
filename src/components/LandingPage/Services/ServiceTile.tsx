@@ -1,6 +1,5 @@
 import { Button } from "@/components/Form/Button";
 import { ArrowLeftIcon } from "@/components/icons";
-import { ENV } from "@/env";
 import { ServiceType } from "./types";
 
 type ServiceTilePropsType = Omit<ServiceType, "description">;
@@ -13,7 +12,7 @@ const ServiceTile: React.FC<ServiceTilePropsType> = ({ image, title }) => {
     >
       <img
         className="mx-auto"
-        src={`${ENV.STRAPI_URL}${image.url}`}
+        src={image.url}
         alt={image.name}
         width={200}
         height={200}

@@ -11,7 +11,7 @@ const URL =
   "api/nutricionez-articles?populate[image][fields][0]=name&populate[image][fields][1]=url";
 
 type StrapiResponseType = {
-  data: ArticleType[];
+  data?: ArticleType[];
 };
 
 const Articles: FC = async () => {
@@ -21,21 +21,25 @@ const Articles: FC = async () => {
 
   return (
     <main data-testid="articles" className="relative min-h-screen max-w-none">
-      <Section id="newestPost" className="mt-6">
-        <NewestPostModule post={data[0]} />
-      </Section>
-      <Section
-        id="latestPosts"
-        className="mx-0 max-w-none bg-primary-light px-0 lg:px-4"
-      >
-        <div className="mx-0 max-w-screen-xl lg:mx-auto">
-          <LatestPostsModule latestPosts={data.slice(0, 4)} />
-        </div>
-      </Section>
+      {data && (
+        <Section id="newestPost" className="mt-6">
+          <NewestPostModule post={data?.[0]} />
+        </Section>
+      )}
+      {data && (
+        <Section
+          id="latestPosts"
+          className="mx-0 max-w-none bg-primary-light px-0 lg:px-4"
+        >
+          <div className="mx-0 max-w-screen-xl lg:mx-auto">
+            <LatestPostsModule latestPosts={data?.slice(0, 4)} />
+          </div>
+        </Section>
+      )}
       <Section id="aboutMe">
         <AboutMeBlogModule />
       </Section>
-      {data.length > 1 && (
+      {data && data?.length > 1 && (
         <Section id="allPosts">
           <PostsModule categories={[]} posts={data} hasNext={false} />
         </Section>

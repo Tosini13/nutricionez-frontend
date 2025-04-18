@@ -17,7 +17,7 @@ export type ArticleType = {
   documentId: string;
   id: string;
   title: string;
-  publish_date: string;
+  publishedDate: string;
   image: ImageType;
   content: ContentType[];
   createdAt: string;

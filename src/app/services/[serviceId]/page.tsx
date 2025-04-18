@@ -43,7 +43,7 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
               {data.title}
             </h2>
             <Paragraph className="text-center md:text-left">
-              {data.description}
+              {data.description[0].children[0].text}
             </Paragraph>
             <ButtonLink
               href="/#contact"
@@ -55,7 +55,7 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
           <div className="hidden min-w-[40%] md:block">
             <img
               className="mx-auto block"
-              src={`${ENV.STRAPI_URL}${data.largeImage.url}`}
+              src={data.largeImage.url}
               alt={data.largeImage.name}
               width={400}
               height={400}

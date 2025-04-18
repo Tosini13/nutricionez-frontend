@@ -30,7 +30,7 @@ const Article: FC<ArticlePropsType> = async (props) => {
       <Section id="post_content" className="max-w-3xl md:mx-auto">
         <SectionTitle>{data.title}</SectionTitle>
         <Paragraph className="font-medium text-secondary">
-          {new Date(data.publish_date).toLocaleDateString("es-ES", {
+          {new Date(data.publishedDate).toLocaleDateString("es-ES", {
             year: "numeric",
             month: "numeric",
             day: "numeric",
@@ -50,7 +50,7 @@ const Article: FC<ArticlePropsType> = async (props) => {
             <span className="hidden sm:inline">/</span> 9 min. reading */}
         </Paragraph>
         <img
-          src={`${ENV.STRAPI_URL}${data.image.url}`}
+          src={data.image.url}
           alt={data.image.name}
           className="my-10 w-full rounded-3xl"
           width={0}

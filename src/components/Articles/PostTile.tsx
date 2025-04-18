@@ -1,4 +1,3 @@
-import { ENV } from "@/env";
 import { twMerge } from "tailwind-merge";
 import Paragraph from "../Sections/Paragraph";
 import { ArticleType } from "./types";
@@ -18,7 +17,7 @@ const PostTile: React.FC<PostTilePropsType> = ({ post, className }) => (
   >
     <div className="aspect-video shadow-lg rounded-xl overflow-hidden w-full">
       <img
-        src={`${ENV.STRAPI_URL}${post.image.url}`}
+        src={post.image.url}
         alt={post.image.name}
         className="w-full h-full shadow-lg transition-all duration-300 group-hover:scale-105"
       />
@@ -28,7 +27,7 @@ const PostTile: React.FC<PostTilePropsType> = ({ post, className }) => (
         {post.title}
       </h3>
       <Paragraph className="text-gray">
-        {new Date(post.publish_date).toLocaleDateString("es-ES", {
+        {new Date(post.publishedDate).toLocaleDateString("es-ES", {
           year: "numeric",
           month: "long",
         })}

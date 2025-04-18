@@ -1,10 +1,13 @@
 "use client";
+import Link from "next/link";
+import { FC } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ServiceTile from "./ServiceTile";
+import { ServiceType } from "./types";
 
 const SLIDER_BREAK_POINTS = {
   1: {
@@ -33,10 +36,6 @@ const SLIDER_BREAK_POINTS = {
     centeredSlides: false,
   },
 };
-
-import Link from "next/link";
-import { FC } from "react";
-import { ServiceType } from "./types";
 
 type ServicesListPropsType = {
   services: ServiceType[];

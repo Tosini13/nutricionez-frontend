@@ -1,4 +1,3 @@
-import { ENV } from "@/env";
 import { ButtonLink } from "../Form/Button";
 import { ArrowLeftIcon } from "../icons";
 import Paragraph from "../Sections/Paragraph";
@@ -17,7 +16,7 @@ const NewestPostModule: React.FC<NewestPostModulePropsType> = ({ post }) => {
       <div className="col-span-1 md:order-2">
         <div className="overflow-hidden">
           <img
-            src={`${ENV.STRAPI_URL}${post.image.url}`}
+            src={post.image.url}
             alt={post.image.name}
             height={0}
             width={0}
@@ -34,7 +33,7 @@ const NewestPostModule: React.FC<NewestPostModulePropsType> = ({ post }) => {
           {post.title}
         </h1>
         <Paragraph className="text-sm font-medium leading-none text-gray">
-          {new Date(post.publish_date).toLocaleDateString("es-ES", {
+          {new Date(post.publishedDate).toLocaleDateString("es-ES", {
             year: "numeric",
             month: "long",
           })}
