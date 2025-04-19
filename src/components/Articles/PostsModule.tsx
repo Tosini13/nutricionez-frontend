@@ -1,5 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../Form/Button";
 import SectionTitle from "../Sections/SectionTitle";
@@ -103,9 +104,12 @@ const PostsModule: React.FC<PostsModulePropsType> = ({
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <a href={`/blog/posts/${post.id}`} className="block h-full">
+                <Link
+                  href={`/blog/posts/${post.slug}`}
+                  className="block h-full"
+                >
                   <PostTile post={post} className="h-full" />
-                </a>
+                </Link>
               </motion.div>
             ))}
         </AnimatePresence>

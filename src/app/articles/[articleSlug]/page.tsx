@@ -8,29 +8,31 @@ import { ENV } from "@/env";
 import Image from "next/image";
 import { FC } from "react";
 
-const getUrl = (id: string) =>
-  `api/nutricionez-articles/${id}?populate[image][fields][0]=name&populate[image][fields][1]=url`;
+const getUrl = (slug: string) =>
+  `api/nutricionez-articles?filters\[slug\][$eq]=${slug}&populate[image][fields][0]=name&populate[image][fields][1]=url`;
 
 type StrapiResponseType = {
-  data: ArticleType;
+  data: ArticleType[];
 };
 
 type ArticlePropsType = {
-  params: Promise<{ articleName: string }>;
+  params: Promise<{ articleSlug: string }>;
 };
 
 const Article: FC<ArticlePropsType> = async (props) => {
-  const { articleName } = await props.params;
+  const { articleSlug } = await props.params;
   const { data }: StrapiResponseType = await fetch(
-    `${ENV.STRAPI_URL}/${getUrl(articleName)}`
+    `${ENV.STRAPI_URL}/${getUrl(articleSlug)}`
   ).then((res) => res.json());
+
+  const article = data[0];
 
   return (
     <main data-testid="article" className="relative min-h-screen max-w-none">
       <Section id="post_content" className="max-w-3xl md:mx-auto">
-        <SectionTitle>{data.title}</SectionTitle>
+        <SectionTitle>{article.title}</SectionTitle>
         <Paragraph className="font-medium text-secondary">
-          {new Date(data.publishedDate).toLocaleDateString("es-ES", {
+          {new Date(article.publishedDate).toLocaleDateString("es-ES", {
             year: "numeric",
             month: "numeric",
             day: "numeric",
@@ -50,8 +52,8 @@ const Article: FC<ArticlePropsType> = async (props) => {
             <span className="hidden sm:inline">/</span> 9 min. reading */}
         </Paragraph>
         <img
-          src={data.image.url}
-          alt={data.image.name}
+          src={article.image.url}
+          alt={article.image.name}
           className="my-10 w-full rounded-3xl"
           width={0}
           height={0}
@@ -61,7 +63,7 @@ const Article: FC<ArticlePropsType> = async (props) => {
           }}
         />
         <div className="space-y-4 [&>p]:leading-8 [&>p]:tracking-wide">
-          {data.content.map(
+          {article.content.map(
             (content, index) =>
               content.type === "paragraph" && (
                 <Paragraph key={index}>{content.children[0].text}</Paragraph>

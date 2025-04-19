@@ -7,22 +7,26 @@ import Section from "@/components/Sections/Section";
 import { ENV } from "@/env";
 import React from "react";
 
-const getUrl = (id: string) =>
-  `api/nutricionez-services/${id}?populate[largeImage][fields][0]=name&populate[largeImage][fields][1]=url`;
+const getUrl = (slug: string) =>
+  `api/nutricionez-services?filters\[slug\][$eq]=${slug}&populate[largeImage][fields][0]=name&populate[largeImage][fields][1]=url`;
 
 type StrapiResponseType = {
-  data: ServiceType;
+  data: ServiceType[];
 };
 
 type ServiceModulePropsType = {
-  params: Promise<{ serviceId: string }>;
+  params: Promise<{ serviceSlug: string }>;
 };
 
 const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
-  const { serviceId } = await params;
+  const { serviceSlug } = await params;
   const { data }: StrapiResponseType = await fetch(
-    `${ENV.STRAPI_URL}/${getUrl(serviceId)}`
+    `${ENV.STRAPI_URL}/${getUrl(serviceSlug)}`
   ).then((res) => res.json());
+
+  console.log("data !log", data);
+
+  const service = data?.[0];
 
   return (
     <main
@@ -40,10 +44,10 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
               />
             </div>
             <h2 className="mx-auto max-w-[350px] text-center text-3xl font-extrabold leading-10 md:mx-0 md:text-left">
-              {data.title}
+              {service.title}
             </h2>
             <Paragraph className="text-center md:text-left">
-              {data.description[0].children[0].text}
+              {service.description}
             </Paragraph>
             <ButtonLink
               href="/#contact"
@@ -55,8 +59,8 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
           <div className="hidden min-w-[40%] md:block">
             <img
               className="mx-auto block"
-              src={data.largeImage.url}
-              alt={data.largeImage.name}
+              src={service.largeImage.url}
+              alt={service.largeImage.name}
               width={400}
               height={400}
             />

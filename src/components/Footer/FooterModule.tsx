@@ -68,7 +68,7 @@ const FooterModule: React.FC = async () => {
                   className="mb-2.5 pb-6 last:pb-0 md:pb-2"
                 >
                   <FooterLink
-                    href={`/services/${service.documentId}`}
+                    href={`/services/${service.slug}`}
                     title={service.title}
                   />
                 </li>

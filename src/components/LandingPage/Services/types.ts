@@ -1,9 +1,10 @@
-import { ContentType, ImageType } from "@/types";
+import { ImageType } from "@/types";
 
 export type ServiceType = {
   documentId: string;
+  slug: string;
   title: string;
-  description: ContentType[];
+  description: string;
   image: ImageType;
   largeImage: ImageType;
 };

@@ -50,10 +50,10 @@ const ServicesList: FC<ServicesListPropsType> = ({ services }) => (
       pagination={{ clickable: true }}
     >
       {services.map((service) => (
-        <SwiperSlide key={service.documentId} className="h-auto">
+        <SwiperSlide key={service.slug} className="h-auto">
           <Link
             className="h-full highlight-none"
-            href={`/services/${service.documentId}`}
+            href={`/services/${service.slug}`}
           >
             <ServiceTile {...service} />
           </Link>
