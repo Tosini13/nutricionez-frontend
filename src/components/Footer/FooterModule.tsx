@@ -15,9 +15,9 @@ type StrapiResponseType = {
 };
 
 const FooterModule: React.FC = async () => {
-  const { data }: StrapiResponseType = await fetch(
-    `${ENV.STRAPI_URL}/${URL}`
-  ).then((res) => res.json());
+  const { data }: StrapiResponseType = await fetch(`${ENV.STRAPI_URL}/${URL}`, {
+    cache: "no-store",
+  }).then((res) => res.json());
 
   return (
     <footer data-test-id="footer_module" className="bg-[#56383E] text-white">

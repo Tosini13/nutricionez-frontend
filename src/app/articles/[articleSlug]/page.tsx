@@ -22,7 +22,10 @@ type ArticlePropsType = {
 const Article: FC<ArticlePropsType> = async (props) => {
   const { articleSlug } = await props.params;
   const { data }: StrapiResponseType = await fetch(
-    `${ENV.STRAPI_URL}/${getUrl(articleSlug)}`
+    `${ENV.STRAPI_URL}/${getUrl(articleSlug)}`,
+    {
+      cache: "no-store",
+    }
   ).then((res) => res.json());
 
   const article = data[0];

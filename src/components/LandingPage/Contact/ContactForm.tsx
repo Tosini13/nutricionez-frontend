@@ -58,7 +58,7 @@ const ContactForm: FC = () => (
     </div>
     <div className="flex justify-center">
       <Suspense fallback={"Loading ReCaptcha"}>
-        <ReCaptcha />
+        <ReCaptcha siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} />
       </Suspense>
     </div>
     <Button
