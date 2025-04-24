@@ -12,7 +12,7 @@ import { PackType, PriceType } from "./Pack/types";
 const URL_PACKS =
   "api/nutricionez-packs?populate[0]=features&populate[1]=features.list&populate[2]=price";
 
-const URL_PRICES = "api/nutricionez-prices";
+const URL_PRICES = "api/nutricionez-prices?populate[0]=price";
 
 const PacksModule: React.FC = async () => {
   const { data: packsData }: StrapiResponseType<PackType[]> = await fetch(

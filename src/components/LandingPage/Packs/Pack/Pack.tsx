@@ -10,7 +10,7 @@ const Pack: React.FC<PackType> = ({ title, features, recommended, price }) => (
     <div className="flex h-full flex-col space-y-4">
       <div className="grid auto-rows-fr space-y-1">
         <PackHeader title={title} />
-        <PackPrice price={price.price} offer={price.old_price} />
+        <PackPrice price={price.price} old_price={price.old_price} />
       </div>
       <div className="flex-grow">
         <PackFeatureList features={features.list} />
@@ -32,7 +32,7 @@ export const PackIndividual: React.FC<{ prices: PriceType[] }> = ({
         {prices.map((price) => (
           <div key={price.id} className="space-y-3">
             <h3 className="text-center font-semibold">{price.title}</h3>
-            <PackPrice price={price.price} />
+            <PackPrice {...price.price} />
           </div>
         ))}
       </div>
