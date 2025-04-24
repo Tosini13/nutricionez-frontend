@@ -12,3 +12,7 @@ export type ContentType = {
   }>;
   type: string;
 };
+
+export type StrapiResponseType<T> = {
+  data: T;
+};

@@ -3,6 +3,7 @@ import Paragraph from "@/components/Sections/Paragraph";
 import Section from "@/components/Sections/Section";
 import SectionTitle from "@/components/Sections/SectionTitle";
 import { ENV } from "@/env";
+import { StrapiResponseType } from "@/types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -12,14 +13,13 @@ import { ServiceType } from "./types";
 const URL =
   "api/nutricionez-services?populate[image][fields][0]=name&populate[image][fields][1]=url";
 
-type StrapiResponseType = {
-  data: ServiceType[];
-};
-
 const ServicesModule: React.FC = async () => {
-  const { data }: StrapiResponseType = await fetch(`${ENV.STRAPI_URL}/${URL}`, {
-    cache: "no-store",
-  }).then((res) => res.json());
+  const { data }: StrapiResponseType<ServiceType[]> = await fetch(
+    `${ENV.STRAPI_URL}/${URL}`,
+    {
+      cache: "no-store",
+    }
+  ).then((res) => res.json());
 
   return (
     <>
