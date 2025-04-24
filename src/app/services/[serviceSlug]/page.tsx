@@ -27,8 +27,6 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
     }
   ).then((res) => res.json());
 
-  console.log("data !log", data);
-
   const service = data?.[0];
 
   return (

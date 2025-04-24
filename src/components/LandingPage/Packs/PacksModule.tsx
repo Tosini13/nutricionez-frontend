@@ -29,8 +29,6 @@ const PacksModule: React.FC = async () => {
     }
   ).then((res) => res.json());
 
-  console.log("pricesData", pricesData);
-
   return (
     <Section
       data-test-id="packs_module"
