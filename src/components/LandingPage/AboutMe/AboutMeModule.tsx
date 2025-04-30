@@ -1,5 +1,5 @@
+import Block, { BlockType } from "@/components/Block/Block";
 import { ButtonLink } from "@/components/Form/Button";
-import Paragraph from "@/components/Sections/Paragraph";
 import Section from "@/components/Sections/Section";
 import SectionTitle from "@/components/Sections/SectionTitle";
 import { ENV } from "@/env";
@@ -13,21 +13,23 @@ export type MyInfo = {
     name: string;
     url: string;
   };
-  description: string;
+  description: BlockType[];
 };
 
 const URL_MY_INFO =
-  "api/nutricionez-showcases?populate[icon][fields][0]=name&populate[icon][fields][1]=url";
+  "api/nutricionez-showcase?populate[0]=list&populate[1]=list.icon";
 
 const AboutMeModule: React.FC = async () => {
-  const { data }: StrapiResponseType<MyInfo[]> = await fetch(
+  const {
+    data: { list },
+  }: StrapiResponseType<{ list: MyInfo[] }> = await fetch(
     `${ENV.STRAPI_URL}/${URL_MY_INFO}`,
     {
       cache: "no-store",
     }
   ).then((res) => res.json());
 
-  const halves = [data.slice(0, data.length / 2), data.slice(data.length / 2)];
+  const halves = [list.slice(0, list.length / 2), list.slice(list.length / 2)];
 
   return (
     <Section
@@ -56,7 +58,9 @@ const AboutMeModule: React.FC = async () => {
                       width={40}
                       height={40}
                     />
-                    <Paragraph>{myInfo.description}</Paragraph>
+                    {myInfo.description.map((block, i) => (
+                      <Block key={i} block={block} />
+                    ))}
                   </div>
                 ))}
               </div>
