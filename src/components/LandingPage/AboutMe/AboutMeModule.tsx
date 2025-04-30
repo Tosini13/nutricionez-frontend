@@ -2,53 +2,33 @@ import { ButtonLink } from "@/components/Form/Button";
 import Paragraph from "@/components/Sections/Paragraph";
 import Section from "@/components/Sections/Section";
 import SectionTitle from "@/components/Sections/SectionTitle";
-import {
-  HealthIcon,
-  LaboratoryIcon,
-  OrderIcon,
-  UniversityIcon,
-} from "../../icons";
+import { ENV } from "@/env";
+import { StrapiResponseType } from "@/types";
+import Image from "next/image";
 import Img from "../../Img/Img";
 
 export type MyInfo = {
   id: string;
-  icon: React.ReactNode;
+  icon: {
+    name: string;
+    url: string;
+  };
   description: string;
 };
 
-const myInfos: Array<MyInfo> = [
-  {
-    id: "1",
-    icon: <UniversityIcon className="text-transparent" />,
-    description:
-      "Soy Esther Zamora, Dietista-nutricionista especializada en nutrición clínica, graduada por la Universidad de Valencia, aunque cursé un año de mis estudios en la Universidad de Milán, Italia (Università degli studi di Milano).",
-  },
-  {
-    id: "2",
-    icon: <LaboratoryIcon className="text-transparent" />,
-    description:
-      "Pienso que es muy importante individualizar cada caso para lograr el éxito en el tratamiento así como colaborar con otros profesionales de la salud si fuera necesario como: psicólogos, fisioterapeutas, médicos, entrenadores personales, etc.",
-  },
-  {
-    id: "3",
-    icon: <HealthIcon className="text-transparent" />,
-    description:
-      "He realizado numerosos cursos formativos enfocados en nutrición clínica para el manejo de las enfermedades con la alimentación. He trabajado en varias clínicas de nutrición abordando distintos objetivos, que me han brindado el conocimiento y la experiencia para poder ayudarte a lograr tus metas desde un enfoque científico, eficaz y seguro.",
-  },
-  {
-    id: "4",
-    icon: <OrderIcon className="text-transparent" />,
-    description:
-      "Estoy colegiada por el CODINUCOVA (Colegio de Dietistas-Nutricionistas de la Comunidad Valenciana). Nº: CV01045",
-  },
-];
+const URL_MY_INFO =
+  "api/nutricionez-showcases?populate[icon][fields][0]=name&populate[icon][fields][1]=url";
 
-const halves = [
-  myInfos.slice(0, myInfos.length / 2),
-  myInfos.slice(myInfos.length / 2),
-];
+const AboutMeModule: React.FC = async () => {
+  const { data }: StrapiResponseType<MyInfo[]> = await fetch(
+    `${ENV.STRAPI_URL}/${URL_MY_INFO}`,
+    {
+      cache: "no-store",
+    }
+  ).then((res) => res.json());
 
-const AboutMeModule: React.FC = () => {
+  const halves = [data.slice(0, data.length / 2), data.slice(data.length / 2)];
+
   return (
     <Section
       data-test-id="about_me_module"
@@ -69,7 +49,13 @@ const AboutMeModule: React.FC = () => {
                     data-test-id="about_me_paragraph"
                     className="space-y-4"
                   >
-                    <div className="mx-auto md:ml-0">{myInfo.icon}</div>
+                    <Image
+                      className="mx-auto md:ml-0"
+                      src={myInfo.icon.url}
+                      alt={myInfo.icon.name}
+                      width={40}
+                      height={40}
+                    />
                     <Paragraph>{myInfo.description}</Paragraph>
                   </div>
                 ))}
