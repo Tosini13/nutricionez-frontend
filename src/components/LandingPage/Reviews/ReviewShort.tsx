@@ -1,5 +1,4 @@
 import Paragraph from "@/components/Sections/Paragraph";
-import Image from "next/image";
 import { GoogleIcon, StarGained } from "../../icons";
 import { ReviewType } from "./types";
 
@@ -11,26 +10,26 @@ const ReviewShort: React.FC<ReviewShortPropsType> = ({ review }) => {
   return (
     <a
       data-testid="review_short"
-      className="flex h-[100px] cursor-pointer items-center rounded-xl bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md"
-      href={review.review_url}
+      className="flex h-fit cursor-pointer items-center rounded-xl bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md"
+      href={review.link}
       target="_blank"
     >
-      <Image
-        src={review.author_url}
+      {/* <Image
+        src={review.author_photo}
         alt="review author's photo"
         width={72}
         height={72}
-      />
+      /> */}
       <div className="ml-2 flex h-full flex-col justify-between">
-        <Paragraph className="font-medium leading-none">
-          {review.author_name}
-        </Paragraph>
-        <Paragraph className="font-extralight leading-none">
-          {new Date(review.time).toLocaleDateString("es-ES", {
+        {/* <Paragraph className="font-medium leading-none">
+          {review.author}
+        </Paragraph> */}
+        {/* <Paragraph className="font-normal leading-none">
+          {new Date(review.date).toLocaleDateString("es-ES", {
             year: "numeric",
-            month: "short",
+            month: "long",
           })}
-        </Paragraph>
+        </Paragraph> */}
         <div className="flex items-center space-x-1">
           <StarGained />
           <Paragraph className="font-medium leading-tight">

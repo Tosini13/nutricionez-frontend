@@ -8,7 +8,7 @@ const Feature: React.FC<FeatureType> = ({ iconUrl, title, description }) => (
       <Image src={iconUrl} alt="secure icon" width={25} height={25} />
     </div>
     <div className="flex h-full flex-col">
-      <h2 className="text-xl font-semibold text-primary">{title}</h2>
+      <span className="text-xl font-semibold text-primary">{title}</span>
       <Paragraph className="leading-8">{description}</Paragraph>
     </div>
   </div>

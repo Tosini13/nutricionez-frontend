@@ -8,9 +8,7 @@ import { ReviewType } from "./types";
 
 const URL_REVIEWS = "api/nutricionez-reviews";
 
-type ReviewsModulePropsType = {};
-
-const ReviewsModule: FC<ReviewsModulePropsType> = async () => {
+const ReviewsModule: FC = async () => {
   const { data }: StrapiResponseType<ReviewType[]> = await fetch(
     `${ENV.STRAPI_URL}/${URL_REVIEWS}`,
     {
