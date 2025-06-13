@@ -83,7 +83,9 @@ const PostsModule: React.FC<PostsModulePropsType> = ({
   const [currentTab, setCurrentTab] = useState("all");
   return (
     <div data-testid="posts_module">
-      <SectionTitle className="text-left">My articles</SectionTitle>
+      <SectionTitle Component="h1" className="text-left">
+        My articles
+      </SectionTitle>
       <PostsNav
         tabs={[{ title: "all" }, ...categories]}
         category={currentTab}

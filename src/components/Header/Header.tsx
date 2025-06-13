@@ -37,7 +37,7 @@ export const links: Array<TLinkType> = [
 
 const HeaderModule: React.FC = () => {
   return (
-    <header
+    <nav
       data-testid="header_module"
       className="sticky top-0 left-0 z-50 max-h-[84px] w-full"
     >
@@ -59,7 +59,7 @@ const HeaderModule: React.FC = () => {
       <div className="block md:hidden">
         <HeaderMobile links={links} />
       </div>
-    </header>
+    </nav>
   );
 };
 

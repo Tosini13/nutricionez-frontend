@@ -44,9 +44,9 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
                 href="/#servicios"
               />
             </div>
-            <h2 className="mx-auto max-w-[350px] text-center text-3xl font-extrabold leading-10 md:mx-0 md:text-left">
+            <h1 className="mx-auto max-w-[350px] text-center text-3xl font-extrabold leading-10 md:mx-0 md:text-left">
               {service.title}
-            </h2>
+            </h1>
             <Paragraph className="text-center md:text-left">
               {service.description}
             </Paragraph>

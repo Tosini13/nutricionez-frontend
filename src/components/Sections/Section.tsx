@@ -1,9 +1,14 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const Section: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+type TSectionProps = React.HTMLAttributes<HTMLDivElement> & {
+  Component?: "section" | "header";
+};
+
+const Section: React.FC<TSectionProps> = ({
   children,
   className,
+  Component = "section",
   ...props
 }) => {
   const mergedClassName = React.useMemo(
@@ -15,9 +20,9 @@ const Section: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     [className]
   );
   return (
-    <section className={mergedClassName} {...props}>
+    <Component className={mergedClassName} {...props}>
       {children}
-    </section>
+    </Component>
   );
 };
 

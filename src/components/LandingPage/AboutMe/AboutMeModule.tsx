@@ -1,9 +1,9 @@
-import Block, { BlockType } from "@/components/Block/Block";
 import { ButtonLink } from "@/components/Form/Button";
 import Section from "@/components/Sections/Section";
 import SectionTitle from "@/components/Sections/SectionTitle";
 import { ENV } from "@/env";
 import { StrapiResponseType } from "@/types";
+import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import Img from "../../Img/Img";
 
@@ -13,7 +13,7 @@ export type MyInfo = {
     name: string;
     url: string;
   };
-  description: BlockType[];
+  description: BlocksContent;
 };
 
 const URL_MY_INFO =
@@ -58,9 +58,7 @@ const AboutMeModule: React.FC = async () => {
                       width={40}
                       height={40}
                     />
-                    {myInfo.description.map((block, i) => (
-                      <Block key={i} block={block} />
-                    ))}
+                    <BlocksRenderer content={myInfo.description} />
                   </div>
                 ))}
               </div>

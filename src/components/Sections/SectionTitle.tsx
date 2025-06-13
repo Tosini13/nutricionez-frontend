@@ -1,10 +1,13 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-type TSectionTitleProps = React.ButtonHTMLAttributes<HTMLHeadingElement>;
+type TSectionTitleProps = React.ButtonHTMLAttributes<HTMLHeadingElement> & {
+  Component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
+};
 
 const SectionTitle: React.FC<TSectionTitleProps> = ({
   className,
+  Component = "h2",
   ...props
 }) => {
   const mergedClassName = React.useMemo(
@@ -12,7 +15,11 @@ const SectionTitle: React.FC<TSectionTitleProps> = ({
     [className]
   );
   return (
-    <h2 data-testid="sobremi_title" className={mergedClassName} {...props} />
+    <Component
+      data-testid="sobremi_title"
+      className={mergedClassName}
+      {...props}
+    />
   );
 };
 

@@ -1,4 +1,5 @@
-import { ContentType, ImageType } from "@/types";
+import { ImageType } from "@/types";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 
 export type PostType = {
   id: string;
@@ -20,8 +21,14 @@ export type ArticleType = {
   slug: string;
   publishedDate: string;
   image: ImageType;
-  content: ContentType[];
+  content: BlocksContent;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  author: {
+    id: number;
+    documentId: string;
+    firstName: string;
+    lastName: string;
+  };
 };

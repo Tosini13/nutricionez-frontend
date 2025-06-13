@@ -29,9 +29,9 @@ const NewestPostModule: React.FC<NewestPostModulePropsType> = ({ post }) => {
         </div>
       </div>
       <div className="col-span-1 space-y-6 pt-10 md:order-1">
-        <h1 className="text-xl font-semibold leading-tight md:text-2xl lg:text-4xl">
+        <span className="text-xl font-semibold leading-tight md:text-2xl lg:text-4xl">
           {post.title}
-        </h1>
+        </span>
         <Paragraph className="text-sm font-medium leading-none text-gray">
           {new Date(post.publishedDate).toLocaleDateString("es-ES", {
             year: "numeric",

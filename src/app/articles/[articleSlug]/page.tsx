@@ -5,11 +5,12 @@ import Paragraph from "@/components/Sections/Paragraph";
 import Section from "@/components/Sections/Section";
 import SectionTitle from "@/components/Sections/SectionTitle";
 import { ENV } from "@/env";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import { FC } from "react";
 
 const getUrl = (slug: string) =>
-  `api/nutricionez-articles?filters\[slug\][$eq]=${slug}&populate[image][fields][0]=name&populate[image][fields][1]=url`;
+  `api/nutricionez-articles?filters\[slug\][$eq]=${slug}&populate[image][fields][0]=name&populate[image][fields][1]=url&populate[author][fields][2]=firstName&populate[author][fields][3]=lastName`;
 
 type StrapiResponseType = {
   data: ArticleType[];
@@ -33,7 +34,7 @@ const Article: FC<ArticlePropsType> = async (props) => {
   return (
     <main data-testid="article" className="relative min-h-screen max-w-none">
       <Section id="post_content" className="max-w-3xl md:mx-auto">
-        <SectionTitle>{article.title}</SectionTitle>
+        <SectionTitle Component="h1">{article.title}</SectionTitle>
         <Paragraph className="font-medium text-secondary">
           {new Date(article.publishedDate).toLocaleDateString("es-ES", {
             year: "numeric",
@@ -44,10 +45,7 @@ const Article: FC<ArticlePropsType> = async (props) => {
         <Paragraph className="font-normal  text-gray">
           Written by:{" "}
           <span className="font-medium">
-            {
-              // data.author
-              "Author"
-            }
+            {article.author.firstName} {article.author.lastName}
           </span>{" "}
           <br className="inline sm:hidden" />
           {/* 
@@ -65,13 +63,8 @@ const Article: FC<ArticlePropsType> = async (props) => {
             height: "auto",
           }}
         />
-        <div className="space-y-4 [&>p]:leading-8 [&>p]:tracking-wide">
-          {article.content.map(
-            (content, index) =>
-              content.type === "paragraph" && (
-                <Paragraph key={index}>{content.children[0].text}</Paragraph>
-              )
-          )}
+        <div className="space-y-4 [&_p]:leading-8 [&_p]:tracking-wide [&_a]:text-main [&_a]:underline">
+          <BlocksRenderer content={article.content} />
         </div>
       </Section>
 
