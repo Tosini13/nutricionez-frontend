@@ -49,7 +49,7 @@ const HeaderModule: React.FC = () => {
               href="#contact"
               data-size="large"
               data-headerlink="xx"
-              className="whitespace-nowrap"
+              className="whitespace-nowrap px-6 py-3 semi-md:px-10 semi-md:py-4"
             >
               Pide Cita
             </ButtonLink>

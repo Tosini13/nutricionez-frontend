@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "@/components/Form/Link";
+import MenuLink from "@/components/Form/Link";
 import { LogoIcon } from "@/components/icons";
+import Link from "next/link";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { TLinkType } from "../types";
@@ -57,15 +58,15 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ links, actions }) => {
     <div data-testid="header_desktop" ref={ref} className={headerClassName}>
       <div className="mx-auto flex max-w-screen-xl items-center px-2 py-4 transition-all duration-300 xl:px-0">
         <Link href="/#home" aria-label="Go to homepage">
-          <LogoIcon />
+          <LogoIcon className="semi-md:w-48 w-40" />
         </Link>
-        <div className="mx-1 flex grow items-center justify-center space-x-2 semi-md:space-x-8 large:space-x-14">
+        <div className="mx-1 flex grow items-center justify-center space-x-4 semi-md:space-x-8 large:space-x-14">
           {links.map((link) => (
             <div
               key={`${link.title}_${link.href}`}
               className="flex justify-center text-[0px]"
             >
-              <Link
+              <MenuLink
                 title={link.title}
                 href={link.href}
                 className="inline-block text-center text-sm before:invisible before:block
