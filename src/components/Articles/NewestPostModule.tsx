@@ -15,12 +15,12 @@ const NewestPostModule: React.FC<NewestPostModulePropsType> = ({ post }) => {
       className="grid grid-cols-1 gap-x-10 md:grid-cols-[40%_auto]"
     >
       <div className="col-span-1 md:order-2">
-        <div className="overflow-hidden">
+        <div className="overflow-hidden h-full">
           <Image
             src={post.image.url}
             alt={post.image.name}
-            height={0}
-            width={0}
+            height={300}
+            width={400}
             className="ml-auto max-h-[300px] rounded-3xl"
             style={{
               height: "100%",

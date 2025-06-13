@@ -56,8 +56,8 @@ const Article: FC<ArticlePropsType> = async (props) => {
           src={article.image.url}
           alt={article.image.name}
           className="my-10 w-full rounded-3xl"
-          width={0}
-          height={0}
+          height={450}
+          width={750}
           style={{
             width: "100%",
             height: "auto",
