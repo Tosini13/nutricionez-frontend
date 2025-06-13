@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -9,6 +10,7 @@ const secondaryThemeClassName = "text-secondary after:bg-secondary";
 
 type LinkPropsType = React.LinkHTMLAttributes<HTMLAnchorElement> & {
   secondary?: boolean;
+  href: string;
 };
 
 const Link: React.FC<LinkPropsType> = ({
@@ -29,9 +31,9 @@ const Link: React.FC<LinkPropsType> = ({
     [customClassName, secondary]
   );
   return (
-    <a className={className} href={href} onClick={onClick} title={title}>
+    <NextLink className={className} href={href} onClick={onClick} title={title}>
       {title}
-    </a>
+    </NextLink>
   );
 };
 

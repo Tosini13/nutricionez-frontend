@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type TFooterLinkProps = React.LiHTMLAttributes<HTMLLIElement> & {
@@ -6,7 +7,7 @@ type TFooterLinkProps = React.LiHTMLAttributes<HTMLLIElement> & {
 };
 
 const FooterLink: React.FC<TFooterLinkProps> = ({ title, href }) => (
-  <a
+  <Link
     className={
       "text-primary transition-all duration-150 hover-hover:hover:text-white"
     }
@@ -14,7 +15,7 @@ const FooterLink: React.FC<TFooterLinkProps> = ({ title, href }) => (
     style={{ fontWeight: 400 }}
   >
     {title}
-  </a>
+  </Link>
 );
 
 export default FooterLink;

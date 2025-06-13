@@ -63,7 +63,9 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ links }) => {
             href={link.href}
             className="text-xl text-primary"
             onClick={() => setOpen(() => false)}
-          />
+          >
+            {link.title}
+          </Link>
         ))}
       </div>
     </div>
