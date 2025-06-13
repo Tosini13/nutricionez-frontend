@@ -1,4 +1,6 @@
-type ImgPropsType = React.ImgHTMLAttributes<HTMLImageElement> & {
+import Image from "next/image";
+
+type ImgPropsType = Omit<React.ComponentProps<typeof Image>, "src"> & {
   webPsrc?: string;
   src: string;
   srcType?: string;
@@ -14,9 +16,9 @@ const Img: React.FC<ImgPropsType> = ({
 }) => {
   return (
     <picture data-test-id="img">
-      <source srcSet={webPsrc} type="image/webp" />
+      {webPsrc && <source srcSet={webPsrc} type="image/webp" />}
       <source srcSet={src} type={srcType} />
-      <img src={src} alt={alt} {...props} />
+      <Image src={src} alt={alt} loading="lazy" quality={90} {...props} />
     </picture>
   );
 };

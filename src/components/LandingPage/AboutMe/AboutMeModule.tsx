@@ -66,8 +66,12 @@ const AboutMeModule: React.FC = async () => {
           </div>
           <div className="relative order-1 mb-10 h-fit translate-x-[10%] md:order-3 md:mb-0 md:min-w-[30%] md:max-w-[30%] md:translate-x-0">
             <Img
-              width="100%"
-              height="100%"
+              width={0}
+              height={0}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
               src="/assets/images/esther/esther_web_bg.png"
               webPsrc="/assets/images/esther/esther_web_bg.webp"
               alt="Nutricionista Esther"

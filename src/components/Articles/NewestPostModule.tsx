@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ButtonLink } from "../Form/Button";
 import { ArrowLeftIcon } from "../icons";
 import Paragraph from "../Sections/Paragraph";
@@ -15,7 +16,7 @@ const NewestPostModule: React.FC<NewestPostModulePropsType> = ({ post }) => {
     >
       <div className="col-span-1 md:order-2">
         <div className="overflow-hidden">
-          <img
+          <Image
             src={post.image.url}
             alt={post.image.name}
             height={0}

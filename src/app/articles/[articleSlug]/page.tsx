@@ -52,7 +52,7 @@ const Article: FC<ArticlePropsType> = async (props) => {
             TODO: enable when can compute the reading time automatically: 200 words/min
             <span className="hidden sm:inline">/</span> 9 min. reading */}
         </Paragraph>
-        <img
+        <Image
           src={article.image.url}
           alt={article.image.name}
           className="my-10 w-full rounded-3xl"

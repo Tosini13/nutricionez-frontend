@@ -88,8 +88,12 @@ const HomeModule: FC = async () => {
               src="/assets/images/esther/esther_no_background.png"
               webPsrc="/assets/images/esther/esther_no_background.webp"
               alt={`photo persons`}
-              width={"100%"}
-              height={"100%"}
+              width={0}
+              height={0}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
             />
           </div>
           <div className="absolute bottom-0 right-10 z-10">

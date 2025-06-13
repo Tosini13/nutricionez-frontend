@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import Paragraph from "../Sections/Paragraph";
 import { ArticleType } from "./types";
@@ -16,10 +17,12 @@ const PostTile: React.FC<PostTilePropsType> = ({ post, className }) => (
     )}
   >
     <div className="aspect-video shadow-lg rounded-xl overflow-hidden w-full">
-      <img
+      <Image
         src={post.image.url}
         alt={post.image.name}
         className="w-full h-full shadow-lg transition-all duration-300 group-hover:scale-105"
+        width={100}
+        height={100}
       />
     </div>
     <div className="flex grow flex-col p-2">

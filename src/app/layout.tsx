@@ -14,6 +14,44 @@ export const metadata: Metadata = {
   title: "Nutricionista - Esther Zamora",
   description:
     "¿Estás buscando un Dietista Nutricionista online o en Valencia? Puedo ayudarte a mejorar tu salud, mediante un plan de alimentación personalizado. Visita nuestros servicios: sobrepeso, obesidad, diabetes y otras patologías, embarazo y lactancia, alimentación vegetariana y vegana… ¡Aprovecha los descuentos especiales al reservar hoy la cita!",
+  keywords:
+    "nutricionista, dietista, nutrición, dieta, salud, Valencia, online, consulta nutricional",
+  authors: [{ name: "Esther Zamora" }],
+  creator: "Esther Zamora",
+  publisher: "Esther Zamora",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://nutricionez.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Nutricionista - Esther Zamora",
+    description:
+      "¿Estás buscando un Dietista Nutricionista online o en Valencia? Puedo ayudarte a mejorar tu salud, mediante un plan de alimentación personalizado.",
+    url: "https://nutricionez.com",
+    siteName: "Nutricionez",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nutricionista - Esther Zamora",
+    description:
+      "¿Estás buscando un Dietista Nutricionista online o en Valencia? Puedo ayudarte a mejorar tu salud, mediante un plan de alimentación personalizado.",
+  },
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function RootLayout({

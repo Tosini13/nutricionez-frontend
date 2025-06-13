@@ -2,9 +2,10 @@ import { ButtonLink } from "@/components/Form/Button";
 import AButtonIcon from "@/components/Form/ButtonIcon";
 import { ArrowLeftIcon } from "@/components/icons";
 import { ServiceType } from "@/components/LandingPage/Services/types";
-import Paragraph from "@/components/Sections/Paragraph";
 import Section from "@/components/Sections/Section";
 import { ENV } from "@/env";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import Image from "next/image";
 import React from "react";
 
 const getUrl = (slug: string) =>
@@ -47,9 +48,7 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
             <h1 className="mx-auto max-w-[350px] text-center text-3xl font-extrabold leading-10 md:mx-0 md:text-left">
               {service.title}
             </h1>
-            <Paragraph className="text-center md:text-left">
-              {service.description}
-            </Paragraph>
+            <BlocksRenderer content={service.description} />
             <ButtonLink
               href="/#contact"
               className="mx-auto w-full sm:w-fit md:mx-0"
@@ -58,7 +57,7 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
             </ButtonLink>
           </div>
           <div className="hidden min-w-[40%] md:block">
-            <img
+            <Image
               className="mx-auto block"
               src={service.largeImage.url}
               alt={service.largeImage.name}
