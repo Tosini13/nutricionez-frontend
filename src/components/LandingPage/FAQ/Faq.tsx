@@ -39,7 +39,7 @@ const Faq: React.FC<FaqPropsType> = ({ faq }) => {
   );
 
   return (
-    <div data-test-id="faq">
+    <article data-test-id="faq">
       <div
         className={questionClassName}
         onClick={() => setOpen((open) => !open)}
@@ -48,7 +48,7 @@ const Faq: React.FC<FaqPropsType> = ({ faq }) => {
         <div className={arrowClassName} />
       </div>
       <Answer className={classNameAnswer}>{faq.answer}</Answer>
-    </div>
+    </article>
   );
 };
 

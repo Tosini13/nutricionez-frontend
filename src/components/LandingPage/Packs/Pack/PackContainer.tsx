@@ -22,9 +22,9 @@ const PackContainer: React.FC<PackContainerPropsType> = ({
   );
 
   return (
-    <div data-test-id={testId && "pack_container"} className={className}>
+    <article data-test-id={testId && "pack_container"} className={className}>
       {children}
-    </div>
+    </article>
   );
 };
 
