@@ -74,7 +74,7 @@ const AboutMeModule: React.FC = async () => {
               }}
               src="/assets/images/esther/esther_web_bg.png"
               webPsrc="/assets/images/esther/esther_web_bg.webp"
-              alt="Nutricionista Esther"
+              alt="Esther Zamora - Dietista Nutricionista especializada en Valencia"
             />
           </div>
         </div>

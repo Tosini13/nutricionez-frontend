@@ -87,7 +87,7 @@ const HomeModule: FC = async () => {
               className="max-h-[500px]"
               src="/assets/images/esther/esther_no_background.png"
               webPsrc="/assets/images/esther/esther_no_background.webp"
-              alt={`photo persons`}
+              alt="Esther Zamora - Nutricionista profesional en Valencia"
               width={0}
               height={0}
               style={{

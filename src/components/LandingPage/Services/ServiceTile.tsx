@@ -13,7 +13,7 @@ const ServiceTile: React.FC<ServiceTilePropsType> = ({ image, title }) => (
     <Image
       className="mx-auto"
       src={image.url}
-      alt={image.name}
+      alt={`${title} - Servicio de nutrición especializado`}
       width={200}
       height={200}
     />
