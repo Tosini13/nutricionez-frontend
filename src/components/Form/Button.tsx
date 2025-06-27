@@ -55,3 +55,9 @@ export const ButtonLink = withButtonStyle<
     href: string;
   }
 >((props) => <Link data-test-id="button_link" {...props} />);
+
+export const ALink = withButtonStyle<
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+  }
+>((props) => <a data-test-id="button_link" {...props} />);
