@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nutricionez.com/sitemap.xml
+
+# Disallow areas
+Disallow: /api/
+Disallow: /_next/
