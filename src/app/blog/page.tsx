@@ -20,7 +20,7 @@ const Articles: FC = async () => {
   }).then((res) => res.json());
 
   return (
-    <main data-testid="articles" className="relative min-h-screen max-w-none">
+    <main data-testid="posts" className="relative min-h-screen max-w-none">
       {data && (
         <Section id="newestPost" className="mt-6">
           <NewestPostModule post={data?.[0]} />

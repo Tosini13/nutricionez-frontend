@@ -84,7 +84,7 @@ const PostsModule: React.FC<PostsModulePropsType> = ({
   return (
     <div data-testid="posts_module">
       <SectionTitle Component="h1" className="text-left">
-        My articles
+        My Blog
       </SectionTitle>
       <PostsNav
         tabs={[{ title: "all" }, ...categories]}

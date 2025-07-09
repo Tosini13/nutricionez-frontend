@@ -31,7 +31,7 @@ export const links: Array<TLinkType> = [
   },
   {
     title: "Blog",
-    href: "/articles",
+    href: "/blog",
   },
 ];
 
@@ -46,7 +46,7 @@ const HeaderModule: React.FC = () => {
           links={links}
           actions={
             <ButtonLink
-              href="#contact"
+              href="/#contact"
               data-size="large"
               data-headerlink="xx"
               className="whitespace-nowrap px-6 py-3 semi-md:px-10 semi-md:py-4"

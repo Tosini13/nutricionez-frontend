@@ -17,13 +17,13 @@ type StrapiResponseType = {
 };
 
 type ArticlePropsType = {
-  params: Promise<{ articleSlug: string }>;
+  params: Promise<{ postSlug: string }>;
 };
 
 const Article: FC<ArticlePropsType> = async (props) => {
-  const { articleSlug } = await props.params;
+  const { postSlug } = await props.params;
   const { data }: StrapiResponseType = await fetch(
-    `${ENV.STRAPI_URL}/${getUrl(articleSlug)}`,
+    `${ENV.STRAPI_URL}/${getUrl(postSlug)}`,
     {
       cache: "no-store",
     }
