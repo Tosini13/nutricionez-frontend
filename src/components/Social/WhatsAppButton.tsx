@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ALink } from "../Form/Button";
 
 const Icon = () => (
@@ -12,20 +13,77 @@ const Icon = () => (
   </svg>
 );
 
+const Avatar = () => (
+  <Image src="/assets/icons/avatar.png" alt="avatar" width={40} height={40} />
+);
+
+interface MessageContainerProps {
+  text: string;
+  isOwn?: boolean;
+  timestamp?: string;
+}
+
+const MessageContainer: React.FC<MessageContainerProps> = ({
+  text,
+  isOwn = false,
+  timestamp,
+}) => (
+  <div className={`flex ${isOwn ? "justify-end" : "justify-start"} mb-2`}>
+    <div
+      className={`max-w-xs lg:max-w-md px-3 py-2 rounded-2xl ${
+        isOwn
+          ? "bg-green-500 text-white rounded-br-md"
+          : "bg-gray-200 text-gray-800 rounded-bl-md"
+      }`}
+    >
+      <div className="text-sm">{text}</div>
+      {timestamp && (
+        <div
+          className={`text-xs mt-1 ${
+            isOwn ? "text-green-100" : "text-gray-500"
+          }`}
+        >
+          {timestamp}
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+const WhatsAppChat = () => {
+  return (
+    <article className="bg-slate-400 rounded-md shadow-lg overflow-hidden">
+      <div className="flex items-center gap-2 p-4 bg-green-800 text-primary-light">
+        <Avatar />
+        <span className="text-sm font-medium">Esther Zamora</span>
+      </div>
+      <div className="flex flex-col gap-2 p-4 bg-gray-50">
+        <MessageContainer
+          text="¡Hola! ¿En qué puedo ayudarte hoy?"
+          timestamp="10:30"
+        />
+      </div>
+    </article>
+  );
+};
+
 const WhatsAppButton = () => {
   return (
-    <div className="bg-main rounded-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
-      <ALink
-        href="https://wa.me/34601533664"
-        target={"_blank"}
-        rel="noreferrer"
-        className="flex items-center gap-2 py-2 pl-4 pr-2"
-      >
-        <span className="text-primary-light font-medium flex items-center gap-2">
-          Pregúntame por <span className="font-medium">WhatsApp</span>
-        </span>
-        <Icon />
-      </ALink>
+    <div className="flex flex-col gap-2">
+      <WhatsAppChat />
+      <div className="bg-main rounded-full bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
+        <ALink
+          href="https://wa.me/34601533664"
+          target={"_blank"}
+          rel="noreferrer"
+          className="flex items-center gap-2 py-2 pl-4 pr-2"
+        >
+          <span className="text-primary-light font-medium flex items-center gap-2">
+            Pregúntame por <span className="font-medium">WhatsApp</span>
+          </span>
+          <Icon />
+        </ALink>
+      </div>
     </div>
   );
 };
