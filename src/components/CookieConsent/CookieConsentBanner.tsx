@@ -74,7 +74,7 @@ const runCookieConsent = (setIsConsented: (isConsented: boolean) => void) =>
       },
     },
     onChange: ({ cookie }) => {
-      if (cookie.categories.includes("analytics")) {
+      if (cookie.categories?.includes("analytics")) {
         setIsConsented(true);
       } else {
         setIsConsented(false);
@@ -83,7 +83,7 @@ const runCookieConsent = (setIsConsented: (isConsented: boolean) => void) =>
   });
 
 const checkIfAnalyticsIsAccepted = () =>
-  CookieConsent.getCookie().categories.includes("analytics");
+  CookieConsent.getCookie().categories?.includes("analytics");
 
 export default function CookieConsentBanner() {
   const [isConsented, setIsConsented] = useState(() =>
