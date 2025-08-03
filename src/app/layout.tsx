@@ -1,9 +1,9 @@
+import CookieConsentBanner from "@/components/CookieConsent/CookieConsentBanner";
 import FooterModule from "@/components/Footer/FooterModule";
 import HeaderModule from "@/components/Header/Header";
 import FloatingWhatsAppButton from "@/components/Social/FloatingWhatsAppButton";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { Suspense } from "react";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -66,10 +66,9 @@ export default function RootLayout({
       <body
         className={`${poppins.className} antialiased bg-[#FFF] text-base text-[#313131]`}
       >
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 items-end">
-          <Suspense>
-            <FloatingWhatsAppButton />
-          </Suspense>
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-center">
+          <CookieConsentBanner />
+          <FloatingWhatsAppButton />
         </div>
         <HeaderModule />
         {children}

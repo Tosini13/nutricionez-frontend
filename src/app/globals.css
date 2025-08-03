@@ -21,6 +21,31 @@
   --gray: rgba(0, 0, 0, 0.4);
   --button-disabled-bg: rgba(104, 169, 87, 0.2);
   --button-disabled-text: #68a957;
+
+  /* Cookie Consent */
+  --cc-bg: #fff;
+  --cc-primary-color: var(--neutral);
+  --cc-secondary-color: #575757;
+
+  --cc-btn-primary-bg: var(--primary);
+  --cc-btn-primary-color: var(--primary-light);
+  --cc-btn-primary-border-color: var(--cc-btn-primary-bg);
+  --cc-btn-primary-hover-bg: var(--main);
+  --cc-btn-primary-hover-color: var(--primary-light);
+  --cc-btn-primary-hover-border-color: var(--cc-btn-primary-hover-bg);
+
+  --cc-btn-secondary-bg: transparent;
+  --cc-btn-secondary-color: var(--neutral);
+  --cc-btn-secondary-border-color: var(--cc-btn-secondary-bg);
+  --cc-btn-secondary-hover-bg: var(--primary-light);
+  --cc-btn-secondary-hover-color: var(--neutral);
+  --cc-btn-secondary-hover-border-color: var(--cc-btn-secondary-hover-bg);
+
+  --cc-toggle-enabled-icon-color: var(--button-disabled-text);
+  --cc-toggle-on-bg: var(--cc-btn-primary-bg);
+  --cc-toggle-off-bg: #c9cece;
+  --cc-toggle-on-knob-bg: #ffffff;
+  --cc-toggle-off-knob-bg: #fb4646;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -139,8 +164,7 @@ footer .triangle {
 }
 
 @utility fade-up {
-  transition:
-    transform 1s cubic-bezier(0.64, 0.04, 0.26, 0.87),
+  transition: transform 1s cubic-bezier(0.64, 0.04, 0.26, 0.87),
     opacity 0.8s cubic-bezier(0.64, 0.04, 0.26, 0.87);
   opacity: 0;
   transform: translate3d(0, 2rem, 0);

@@ -19,7 +19,7 @@ const FloatingWhatsAppButton = () => {
         color: "#fff",
         borderRadius: "50%",
       }}
-      className="min-w-14 min-h-14"
+      className="min-w-[76px] min-h-[76px]"
     />
   );
 };
