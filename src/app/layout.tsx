@@ -1,6 +1,6 @@
 import FooterModule from "@/components/Footer/FooterModule";
-import SocialBar from "@/components/Footer/SocialBar";
 import HeaderModule from "@/components/Header/Header";
+import SocialBar from "@/components/Social/SocialBar";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
