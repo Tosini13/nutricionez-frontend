@@ -42,7 +42,13 @@ const URL_HERO = "api/nutricionez-hero?populate[0]=nutricionez_review";
 
 const HomeModule: FC = async () => {
   const { data }: StrapiResponseType<HeroType> = await fetch(
-    `${ENV.STRAPI_URL}/${URL_HERO}`
+    `${ENV.STRAPI_URL}/${URL_HERO}`,
+    {
+      cache: "force-cache",
+      next: {
+        tags: ["hero"],
+      },
+    }
   ).then((res) => res.json());
 
   return (

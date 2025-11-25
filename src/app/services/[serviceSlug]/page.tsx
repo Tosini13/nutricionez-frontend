@@ -24,7 +24,10 @@ const ServiceModule: React.FC<ServiceModulePropsType> = async ({ params }) => {
   const { data }: StrapiResponseType = await fetch(
     `${ENV.STRAPI_URL}/${getUrl(serviceSlug)}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["service"],
+      },
     }
   ).then((res) => res.json());
 

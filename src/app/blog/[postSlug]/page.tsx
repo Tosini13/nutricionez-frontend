@@ -25,7 +25,10 @@ const Article: FC<ArticlePropsType> = async (props) => {
   const { data }: StrapiResponseType = await fetch(
     `${ENV.STRAPI_URL}/${getUrl(postSlug)}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: [`post-${postSlug}`],
+      },
     }
   ).then((res) => res.json());
 

@@ -12,7 +12,10 @@ const ReviewsModule: FC = async () => {
   const { data }: StrapiResponseType<ReviewType[]> = await fetch(
     `${ENV.STRAPI_URL}/${URL_REVIEWS}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["reviews"],
+      },
     }
   ).then((res) => res.json());
 

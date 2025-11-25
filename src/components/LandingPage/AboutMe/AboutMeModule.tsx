@@ -25,7 +25,10 @@ const AboutMeModule: React.FC = async () => {
   }: StrapiResponseType<{ list: MyInfo[] }> = await fetch(
     `${ENV.STRAPI_URL}/${URL_MY_INFO}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["about-me"],
+      },
     }
   ).then((res) => res.json());
 
