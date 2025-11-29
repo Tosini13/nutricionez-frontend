@@ -34,7 +34,7 @@ const PostsNav: React.FC<PostsNavPropsType> = ({
           : 0,
       });
     }
-  }, [ref.current, category]);
+  }, [category]);
 
   return (
     <div
