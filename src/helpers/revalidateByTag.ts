@@ -7,10 +7,8 @@ export const revalidateByTag = async (tags: string[], paths: string[]) => {
 
   const domain = process.env.NEXT_PUBLIC_DOMAIN;
   if (!domain) {
-    return Response.json({ message: "Domain is required" }, { status: 400 });
+    throw new Error("Domain is required");
   }
 
-  for (const path of paths) {
-    await fetch(`${domain}${path}`);
-  }
+  await Promise.all(paths.map((path) => fetch(`${domain}${path}`)));
 };
