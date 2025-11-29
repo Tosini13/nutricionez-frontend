@@ -8,6 +8,28 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import React from "react";
 
+const ALL_SERVICES_SLUGS_URL = "api/nutricionez-services?fields[0]=slug";
+
+type StrapiSlugsResponseType = {
+  data: { slug: string }[];
+};
+
+export async function generateStaticParams() {
+  const { data }: StrapiSlugsResponseType = await fetch(
+    `${ENV.STRAPI_URL}/${ALL_SERVICES_SLUGS_URL}`,
+    {
+      cache: "force-cache",
+      next: {
+        tags: ["services"],
+      },
+    }
+  ).then((res) => res.json());
+
+  return data.map((service) => ({
+    serviceSlug: service.slug,
+  }));
+}
+
 const getUrl = (slug: string) =>
   `api/nutricionez-services?filters\[slug\][$eq]=${slug}&populate[largeImage][fields][0]=name&populate[largeImage][fields][1]=url`;
 
