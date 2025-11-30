@@ -18,12 +18,10 @@ const runCookieConsent = (setIsConsented: (isConsented: boolean) => void) =>
       translations: {
         es: {
           consentModal: {
-            title: "Política de cookies",
             description:
-              "Usamos cookies para analizar el tráfico y los patrones de uso.",
+              "Acepta nuestras cookies saludables para disfrutar del mejor contenido 🍪",
             acceptAllBtn: "Aceptar todas",
-            acceptNecessaryBtn: "Rechazar todas",
-            showPreferencesBtn: "Gestionar preferencias individuales",
+            showPreferencesBtn: "Gestionar mis preferencias",
           },
           preferencesModal: {
             title: "Gestionar preferencias de cookies",
@@ -85,13 +83,17 @@ const runCookieConsent = (setIsConsented: (isConsented: boolean) => void) =>
 const checkIfAnalyticsIsAccepted = () =>
   CookieConsent.getCookie().categories?.includes("analytics");
 
+const COOKIE_CONSENT_DELAY = 3000;
+
 export default function CookieConsentBanner() {
   const [isConsented, setIsConsented] = useState(() =>
     checkIfAnalyticsIsAccepted()
   );
 
   useEffect(() => {
-    runCookieConsent(setIsConsented);
+    setTimeout(() => {
+      runCookieConsent(setIsConsented);
+    }, COOKIE_CONSENT_DELAY);
     setIsConsented(checkIfAnalyticsIsAccepted());
   }, []);
 
