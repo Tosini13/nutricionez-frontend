@@ -101,6 +101,7 @@ export default function CookieConsentBanner() {
     <>
       {isConsented && <GoogleAnalytics gaId="G-50FD8DLWT6" />}
       <button
+        aria-label="Gestionar mis preferencias de cookies"
         className="bg-primary relative rounded-full h-14 w-14 flex items-center justify-center hover-hover:hover:bg-main transition-all duration-300 shadow-lg"
         onClick={() => CookieConsent.showPreferences()}
       >
