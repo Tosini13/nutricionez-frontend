@@ -17,7 +17,10 @@ const FaqModule: React.FC = async () => {
   const { data }: StrapiResponseType<FAQType[]> = await fetch(
     `${ENV.STRAPI_URL}/${URL_FAQS}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["faq"],
+      },
     }
   ).then((res) => res.json());
 

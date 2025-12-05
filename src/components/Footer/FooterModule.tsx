@@ -16,7 +16,10 @@ type StrapiResponseType = {
 
 const FooterModule: React.FC = async () => {
   const { data }: StrapiResponseType = await fetch(`${ENV.STRAPI_URL}/${URL}`, {
-    cache: "no-store",
+    cache: "force-cache",
+    next: {
+      tags: ["services"],
+    },
   }).then((res) => res.json());
 
   return (

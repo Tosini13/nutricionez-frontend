@@ -18,14 +18,20 @@ const PacksModule: React.FC = async () => {
   const { data: packsData }: StrapiResponseType<PackType[]> = await fetch(
     `${ENV.STRAPI_URL}/${URL_PACKS}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["packs"],
+      },
     }
   ).then((res) => res.json());
 
   const { data: pricesData }: StrapiResponseType<PriceType[]> = await fetch(
     `${ENV.STRAPI_URL}/${URL_PRICES}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["prices"],
+      },
     }
   ).then((res) => res.json());
 

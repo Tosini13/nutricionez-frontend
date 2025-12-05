@@ -17,7 +17,10 @@ const ServicesModule: React.FC = async () => {
   const { data }: StrapiResponseType<ServiceType[]> = await fetch(
     `${ENV.STRAPI_URL}/${URL}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: ["services"],
+      },
     }
   ).then((res) => res.json());
 

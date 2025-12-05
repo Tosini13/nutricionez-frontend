@@ -9,6 +9,28 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import { FC } from "react";
 
+const ALL_ARTICLES_SLUGS_URL = "api/nutricionez-articles?fields[0]=slug";
+
+type StrapiSlugsResponseType = {
+  data: { slug: string }[];
+};
+
+export async function generateStaticParams() {
+  const { data }: StrapiSlugsResponseType = await fetch(
+    `${ENV.STRAPI_URL}/${ALL_ARTICLES_SLUGS_URL}`,
+    {
+      cache: "force-cache",
+      next: {
+        tags: ["blog"],
+      },
+    }
+  ).then((res) => res.json());
+
+  return data.map((article) => ({
+    postSlug: article.slug,
+  }));
+}
+
 const getUrl = (slug: string) =>
   `api/nutricionez-articles?filters\[slug\][$eq]=${slug}&populate[image][fields][0]=name&populate[image][fields][1]=url&populate[author][fields][2]=firstName&populate[author][fields][3]=lastName`;
 
@@ -25,7 +47,10 @@ const Article: FC<ArticlePropsType> = async (props) => {
   const { data }: StrapiResponseType = await fetch(
     `${ENV.STRAPI_URL}/${getUrl(postSlug)}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: {
+        tags: [`post-${postSlug}`],
+      },
     }
   ).then((res) => res.json());
 
